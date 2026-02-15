@@ -1,190 +1,179 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #05070a;
+    background-color: #0b0d17;
     color: white;
     overflow-x: hidden;
 }
 
-/* --- Animated Background Effect --- */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #05070a 100%);
-    z-index: -1;
-}
-
-/* --- Navigation Animation --- */
+/* Navigation */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    position: fixed;
-    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    animation: slideDown 1s ease;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
 }
 
 .logo {
     font-size: 1.8rem;
     font-weight: 900;
     color: #00d2ff;
-    text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-    animation: pulseGlow 2s infinite alternate;
+    text-shadow: 0 0 10px #00d2ff;
+    letter-spacing: 1px;
 }
 
-@keyframes pulseGlow {
-    from { text-shadow: 0 0 10px #00d2ff; }
-    to { text-shadow: 0 0 25px #00d2ff, 0 0 35px #00d2ff; }
+nav ul {
+    display: flex;
+    list-style: none;
 }
 
-/* --- Hero Section --- */
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00d2ff;
+}
+
+/* Hero Section */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 150px 8% 80px;
-    min-height: 100vh;
+    padding: 80px 8%;
+    min-height: 90vh;
+    background: radial-gradient(circle at top right, #1a1a2e, #0b0d17);
 }
 
 .hero-content h1 {
-    font-size: 5rem;
-    line-height: 1;
+    font-size: 4.5rem;
+    line-height: 1.1;
     margin-bottom: 20px;
-    animation: fadeInUp 1s ease forwards;
-    opacity: 0;
+}
+
+.highlight {
+    color: #00d2ff;
+    text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
 }
 
 .hero-content p {
-    font-size: 1.3rem;
-    color: #bbb;
-    margin-bottom: 40px;
-    animation: fadeInUp 1.2s ease forwards 0.3s;
-    opacity: 0;
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    color: #aaa;
+    max-width: 500px;
 }
 
 .btn {
     display: inline-block;
-    padding: 18px 45px;
-    background: linear-gradient(45deg, #00d2ff, #3a7bd5);
-    color: white;
+    padding: 15px 35px;
+    background: #00d2ff;
+    color: #0b0d17;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 700;
-    box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
-    transition: 0.5s;
-    animation: fadeInUp 1.5s ease forwards 0.6s;
-    opacity: 0;
+    transition: 0.3s;
+    box-shadow: 0 0 15px #00d2ff;
 }
 
 .btn:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 210, 255, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px #00d2ff;
 }
 
-/* --- The Ultimate Image Animation --- */
+/* Dr. Shereen Image Effect */
 .hero-image img {
-    width: 450px;
-    height: 450px;
+    width: 420px;
+    height: 420px;
     object-fit: cover;
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Liquid Shape */
-    border: 8px solid rgba(0, 210, 255, 0.2);
-    box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
-    animation: liquidMorph 8s ease-in-out infinite, float 4s ease-in-out infinite;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    border: 6px solid #00d2ff;
+    box-shadow: 0 0 40px rgba(0, 210, 255, 0.4);
+    animation: floating_blob 7s ease-in-out infinite;
 }
 
-@keyframes liquidMorph {
-    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+@keyframes floating_blob {
+    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translateY(0); }
+    50% { border-radius: 50% 50% 30% 70% / 50% 30% 70% 50%; transform: translateY(-20px); }
+    100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translateY(0); }
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-25px); }
-}
-
-/* --- Features Section --- */
+/* Features Section */
 .features {
     padding: 100px 8%;
 }
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 50px 30px;
-    border-radius: 30px;
+    background: linear-gradient(145deg, #161b22, #0b0d17);
+    padding: 45px 30px;
+    border-radius: 25px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
+    transition: 0.4s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
-
-.card::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
-    opacity: 0;
-    transition: 0.5s;
-}
-
-.card:hover::before { opacity: 1; }
 
 .card:hover {
     transform: scale(1.05);
+    background: rgba(0, 210, 255, 0.08);
     border-color: #00d2ff;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
     display: block;
-    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.5));
 }
 
-/* --- Global Animations --- */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
 }
 
 footer {
     text-align: center;
-    padding: 80px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 60px;
+    background: #05060a;
+    border-top: 1px solid #1a1a2e;
 }
 
-/* --- Mobile Fixes --- */
+/* Mobile Responsive */
 @media (max-width: 900px) {
-    .hero { flex-direction: column-reverse; text-align: center; }
-    .hero-image img { width: 300px; height: 300px; margin-bottom: 50px; }
-    .hero-content h1 { font-size: 3rem; }
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 50px;
+    }
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    .hero-image img {
+        width: 280px;
+        height: 280px;
+        margin-bottom: 50px;
+    }
+    nav ul {
+        display: none; /* Simplification for mobile */
+    }
 }
